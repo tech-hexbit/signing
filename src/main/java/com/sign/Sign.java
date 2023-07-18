@@ -62,7 +62,8 @@ public class Sign {
 	public static String generateSignature(String req, String pk) {
 		String signature = null;
 		try {
-			Ed25519PrivateKeyParameters privateKey = new Ed25519PrivateKeyParameters(Base64.getDecoder().decode(pk.getBytes()), 0);
+			Ed25519PrivateKeyParameters privateKey = new Ed25519PrivateKeyParameters(
+					Base64.getDecoder().decode(pk.getBytes()), 0);
 			Signer sig = new Ed25519Signer();
 			sig.init(true, privateKey);
 			sig.update(req.getBytes(), 0, req.length());
